@@ -1,5 +1,6 @@
 #include <iostream>
 #include <stdio.h>
+#include <string.h>
 
 //GLEW
 #define GLEW_STATIC
@@ -9,6 +10,25 @@
 #include <GLFW/glfw3.h>
 
 const GLint WIDTH = 800, HEIGHT = 600; //window dimensions
+
+GLuint VAO, VBO, shader;
+
+void CreateTriange(){
+    GLfloat vertices[] = {-1.0f,1.0f,0.0f, 1.0f, -1.0f, 0.0f, 0.0f, 1.0f, 0.0f }; //defining one triange
+    
+    glGenVertexArrays(1, &VAO); //storing ID of vertex array in VAO
+    glBindVertexArray(VAO);
+    
+    glGenBuffers(1, &VBO);
+    glBindBuffer(GL_ARRAY_BUFFER, VBO);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+    
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0,0);//layout loc, sizeof each value passed in (x,y,z), type of value, normalize value (true/false), stride, offset)
+    glEnableVertexAttribArray(0); //enable the 0 location in the array
+    
+    glBindBuffer(GL_ARRAY_BUFFER, 0); //unbinding
+    glBindVertexArray(0); //unbinding 
+}
 
 int main(){
     if(!glfwInit( )){ //initialize glfw
