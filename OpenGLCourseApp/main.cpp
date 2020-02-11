@@ -1,6 +1,7 @@
 #include <iostream>
 #include <stdio.h>
 #include <string.h>
+#include <cmath>
 
 //GLEW
 #define GLEW_STATIC
@@ -11,17 +12,24 @@
 
 const GLint WIDTH = 800, HEIGHT = 600; //window dimensions
 
-GLuint VAO, VBO, shader;
+GLuint VAO, VBO, shader, uniformXMove;
+
+bool direction = true; //right is true
+float triOffset = 0.0f;
+float triMaxOffset = 0.7f;
+float triIncrement = 0.005f;
 
 //Vertex shader
-static const char* vShader = "                      \n\
-#version 330                                        \n\
-                                                    \n\
-layout(location = 0) in vec3 pos;                   \n\
-                                                    \n\
-void main()                                         \n\
-{                                                   \n\
-gl_Position = vec4(0.4*pos.x,0.4*pos.y,pos.z,1.0);  \n\
+static const char* vShader = "                            \n\
+#version 330                                              \n\
+                                                          \n\
+layout(location = 0) in vec3 pos;                         \n\
+                                                          \n\
+uniform float xMove;                                      \n\
+                                                          \n\
+void main()                                               \n\
+{                                                         \n\
+gl_Position = vec4(0.4*pos.x+xMove,0.4*pos.y,pos.z,1.0);  \n\
 }";
 
 //fragment shader
@@ -104,6 +112,8 @@ void CompileShaders(){
         printf("Error validating program: '%s'\n", eLog);
         return;
     }
+    
+    uniformXMove = glGetUniformLocation(shader, "xMove");
 }
 
 int main(){
@@ -153,15 +163,27 @@ int main(){
     CreateTriange();
     CompileShaders();
 
-
-
     //loop until window closed
     while(!glfwWindowShouldClose(window)){
         glfwPollEvents(); //check for user inputs
+        
+        if(direction){
+            triOffset += triIncrement;
+        }
+        else{
+            triOffset -= triIncrement;
+        }
+        
+        if(abs(triOffset) >= triMaxOffset){
+            direction = !direction;
+        }
+        
         glClearColor(0.0f, 0.0f, 0.0f, 1.0f); //clears entire screen, to color you set (red)
         glClear(GL_COLOR_BUFFER_BIT); //tells what we want to clear, which is just the color (might be other stuff in there)
 
         glUseProgram(shader);
+        
+        glUniform1f(uniformXMove, triOffset);
 
         glBindVertexArray(VAO);
         glDrawArrays(GL_TRIANGLES,0,3);
