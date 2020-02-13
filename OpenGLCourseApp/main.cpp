@@ -24,6 +24,10 @@ float triMaxOffset = 0.7f;
 float triIncrement = 0.005f;
 
 float curAngle = 0.0f;
+bool sizeDirection = true;
+float curSize = 0.4f;
+float maxSize = 0.8f;
+float minSize = 0.1f;
 
 //Vertex shader
 static const char* vShader = "                            \n\
@@ -35,7 +39,7 @@ uniform mat4 model;                                       \n\
                                                           \n\
 void main()                                               \n\
 {                                                         \n\
-gl_Position = model*vec4(0.4*pos.x,0.4*pos.y,pos.z,1.0);  \n\
+gl_Position = model*vec4(pos,1.0);                        \n\
 }";
 
 //fragment shader
@@ -190,6 +194,16 @@ int main(){
             curAngle -=360;
         }
         
+        if(sizeDirection){
+            curSize += 0.001f;
+        }
+        else{
+            curSize -= 0.001f;
+        }
+        if(curSize >= maxSize || curSize <= minSize){
+            sizeDirection = !sizeDirection;
+        }
+        
         glClearColor(0.0f, 0.0f, 0.0f, 1.0f); //clears entire screen, to color you set (red)
         glClear(GL_COLOR_BUFFER_BIT); //tells what we want to clear, which is just the color (might be other stuff in there)
 
@@ -198,7 +212,8 @@ int main(){
         glm::mat4 model(1.0f);
        
         model = glm::translate(model,glm::vec3(triOffset, 0.0f, 0.0f));
-        model = glm::rotate(model, curAngle*toRadians, glm::vec3(0.0f,0.0f,1.0f)); //last value is axis of rotation
+//        model = glm::rotate(model, curAngle*toRadians, glm::vec3(0.0f,0.0f,1.0f)); //last value is axis of rotation
+        model = glm::scale(model, glm::vec3(curSize,curSize,1.0));
       
         glUniformMatrix4fv(uniformModel, 1, GL_FALSE,glm::value_ptr(model)); //false for transpose matrix
         glBindVertexArray(VAO);
