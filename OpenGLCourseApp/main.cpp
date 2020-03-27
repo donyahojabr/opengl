@@ -16,7 +16,7 @@
 const GLint WIDTH = 800, HEIGHT = 600; //window dimensions
 const float toRadians = 3.14159265f / 180.0f;
 
-GLuint VAO, VBO, shader, uniformModel;
+GLuint VAO, VBO, IBO,  shader, uniformModel, uniformProjection;
 
 bool direction = true; //right is true
 float triOffset = 0.0f;
@@ -38,10 +38,11 @@ layout(location = 0) in vec3 pos;                         \n\
 out vec4 vCol;                                            \n\
                                                           \n\
 uniform mat4 model;                                       \n\
+uniform mat4 projection;                                  \n\
                                                           \n\
 void main()                                               \n\
 {                                                         \n\
-gl_Position = model*vec4(pos,1.0);                        \n\
+gl_Position = projection*model*vec4(pos,1.0);             \n\
 vCol = vec4(clamp(pos, 0.0f, 1.0f),1.0f);                 \n\
 }";
 
@@ -59,10 +60,25 @@ colour = vCol;                                      \n\
 }";
 
 void CreateTriange(){
-    GLfloat vertices[] = {-1.0f,-1.0f,0.0f, 1.0f, -1.0f, 0.0f, 0.0f, 1.0f, 0.0f }; //defining one triange
+    
+    unsigned int indices[] = {
+        0, 3, 1,
+        1,3, 2,
+        2, 3, 0,
+        0, 1, 2
+    };
+    
+    GLfloat vertices[] = {-1.0f,-1.0f,0.0f,
+        0.0f, -1.0f, 1.0f, //will add depth to pyramid
+        1.0f, -1.0f, 0.0f,
+        0.0f, 1.0f, 0.0f }; //defining one triange
 
     glGenVertexArrays(1, &VAO); //storing ID of vertex array in VAO
     glBindVertexArray(VAO);
+    
+    glGenBuffers(1, &IBO);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, IBO);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
     glGenBuffers(1, &VBO);
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
@@ -73,6 +89,7 @@ void CreateTriange(){
 
     glBindBuffer(GL_ARRAY_BUFFER, 0); //unbinding
     glBindVertexArray(0); //unbinding
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 }
 
 void AddShader(GLuint theProgram, const char* shaderCode, GLenum shaderType){
@@ -125,10 +142,11 @@ void CompileShaders(){
     if (!result){
         glGetProgramInfoLog(shader, sizeof(eLog), NULL, eLog);
         printf("Error validating program: '%s'\n", eLog);
-        return;
+        //return;
     }
     
     uniformModel = glGetUniformLocation(shader, "model");
+    uniformProjection = glGetUniformLocation(shader, "projection"); //name in shader
 }
 
 int main(){
@@ -171,12 +189,17 @@ int main(){
         glfwTerminate();
         return 1;
     }
+    
+    glEnable(GL_DEPTH_TEST);
 
     //sets up the part of the window you draw to, so we set it to the buffer width and height
     glViewport(0, 0, screenWidth, screenHeight);
 
     CreateTriange();
     CompileShaders();
+    
+    glm::mat4 projection(1.0f);
+    projection = glm::perspective(45.0f, (float)screenWidth/(float)screenHeight, 0.1f, 100.0f);
 
     //loop until window closed
     while(!glfwWindowShouldClose(window)){
@@ -210,19 +233,22 @@ int main(){
         }
         
         glClearColor(0.0f, 0.0f, 0.0f, 1.0f); //clears entire screen, to color you set (red)
-        glClear(GL_COLOR_BUFFER_BIT); //tells what we want to clear, which is just the color (might be other stuff in there)
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); //tells what we want to clear, which is an or of the color and the depth buffer
 
         glUseProgram(shader);
         
         glm::mat4 model(1.0f);
        
-      //  model = glm::translate(model,glm::vec3(triOffset, 0.0f, 0.0f));
-//        model = glm::rotate(model, curAngle*toRadians, glm::vec3(0.0f,0.0f,1.0f)); //last value is axis of rotation
+        model = glm::translate(model,glm::vec3(0.0f, 0.0f, -2.5f));
+        model = glm::rotate(model, curAngle*toRadians, glm::vec3(0.0f,1.0f,0.0f)); //last value is axis of rotation
         model = glm::scale(model, glm::vec3(0.4f,0.4f,1.0));
       
         glUniformMatrix4fv(uniformModel, 1, GL_FALSE,glm::value_ptr(model)); //false for transpose matrix
+        glUniformMatrix4fv(uniformProjection, 1, GL_FALSE,glm::value_ptr(projection)); //false for transpose matrix
         glBindVertexArray(VAO);
-        glDrawArrays(GL_TRIANGLES,0,3);
+        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, IBO);
+        glDrawElements(GL_TRIANGLES, 12, GL_UNSIGNED_INT, 0);
+        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
         glBindVertexArray(0);
 
         glUseProgram(0);
