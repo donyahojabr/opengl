@@ -12,6 +12,7 @@
 		5B332E5323D521BF00494F35 /* libGLEW.2.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B332E5223D521BF00494F35 /* libGLEW.2.1.0.dylib */; };
 		5B332E5723D521F200494F35 /* libglfw.3.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B332E5623D521F100494F35 /* libglfw.3.3.dylib */; };
 		5B947560242D7EBD005C526C /* Mesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B94755E242D7EBD005C526C /* Mesh.cpp */; };
+		5B9475632430EC9B005C526C /* Shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B9475612430EC9B005C526C /* Shader.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -35,6 +36,11 @@
 		5B332E5623D521F100494F35 /* libglfw.3.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.3.dylib; path = ../../../../usr/local/Cellar/glfw/3.3.1/lib/libglfw.3.3.dylib; sourceTree = "<group>"; };
 		5B94755E242D7EBD005C526C /* Mesh.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Mesh.cpp; sourceTree = "<group>"; };
 		5B94755F242D7EBD005C526C /* Mesh.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Mesh.hpp; sourceTree = "<group>"; };
+		5B9475612430EC9B005C526C /* Shader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Shader.cpp; sourceTree = "<group>"; };
+		5B9475622430EC9B005C526C /* Shader.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Shader.hpp; sourceTree = "<group>"; };
+		5B94756C24310A47005C526C /* shader.fs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = shader.fs; sourceTree = "<group>"; };
+		5B94756D24310C1B005C526C /* shader.vs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = shader.vs; sourceTree = "<group>"; };
+		5B94756F24310E8A005C526C /* test.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = test.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,9 +77,13 @@
 		5B332E4723D5206D00494F35 /* OpenGLCourseApp */ = {
 			isa = PBXGroup;
 			children = (
+				5B94756E24310C3A005C526C /* Shader */,
 				5B332E4823D5206D00494F35 /* main.cpp */,
 				5B94755E242D7EBD005C526C /* Mesh.cpp */,
 				5B94755F242D7EBD005C526C /* Mesh.hpp */,
+				5B9475612430EC9B005C526C /* Shader.cpp */,
+				5B9475622430EC9B005C526C /* Shader.hpp */,
+				5B94756F24310E8A005C526C /* test.txt */,
 			);
 			path = OpenGLCourseApp;
 			sourceTree = "<group>";
@@ -87,6 +97,15 @@
 				5B332E5023D5213500494F35 /* OpenGL.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5B94756E24310C3A005C526C /* Shader */ = {
+			isa = PBXGroup;
+			children = (
+				5B94756C24310A47005C526C /* shader.fs */,
+				5B94756D24310C1B005C526C /* shader.vs */,
+			);
+			path = Shader;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -147,6 +166,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B947560242D7EBD005C526C /* Mesh.cpp in Sources */,
+				5B9475632430EC9B005C526C /* Shader.cpp in Sources */,
 				5B332E4923D5206D00494F35 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -24,18 +24,18 @@ void Mesh::createMesh(GLfloat *vertices, unsigned int *indices, unsigned int num
     
     glGenBuffers(1, &IBO);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, IBO);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices[0]*numIndices), indices, GL_STATIC_DRAW);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices[0])*numIndices, indices, GL_STATIC_DRAW);
 
     glGenBuffers(1, &VBO);
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(indices[0]*numIndices), vertices, GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(indices[0])*numIndices, vertices, GL_STATIC_DRAW);
 
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0,0);//layout loc, sizeof each value passed in (x,y,z), type of value, normalize value (true/false), stride, offset)
     glEnableVertexAttribArray(0); //enable the 0 location in the array
 
     glBindBuffer(GL_ARRAY_BUFFER, 0); //unbinding
-    glBindVertexArray(0); //unbinding
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+    glBindVertexArray(0); //unbinding
 }
 
 void Mesh::renderMesh(){
@@ -57,7 +57,7 @@ void Mesh::clearMesh(){
         VBO = 0;
     }
     if(VAO != 0){
-        __glewDeleteVertexArrays(1,&VAO);
+        glDeleteVertexArrays(1,&VAO);
         VAO = 0;
     }
     indexCount = 0;
