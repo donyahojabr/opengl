@@ -32,12 +32,6 @@ void Shader::CreateFromFiles(const char *vertexLocation, const char *fragmentLoc
 
 std::string Shader::ReadFile(const char *fileLocation){
     std::string content;
-//    const char* test= "test.txt";
-//    std::ifstream fs(test, std::ios::in);
-//    if(!fs.is_open()){
-//        printf("Failed to read %s. File doesn't exist", test);
-//        return "";
-//    }
     
     std::ifstream fileStream(fileLocation);
     

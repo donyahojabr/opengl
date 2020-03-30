@@ -13,6 +13,7 @@
 		5B332E5723D521F200494F35 /* libglfw.3.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B332E5623D521F100494F35 /* libglfw.3.3.dylib */; };
 		5B947560242D7EBD005C526C /* Mesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B94755E242D7EBD005C526C /* Mesh.cpp */; };
 		5B9475632430EC9B005C526C /* Shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B9475612430EC9B005C526C /* Shader.cpp */; };
+		5B94757224323E41005C526C /* Window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B94757024323E41005C526C /* Window.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -40,7 +41,8 @@
 		5B9475622430EC9B005C526C /* Shader.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Shader.hpp; sourceTree = "<group>"; };
 		5B94756C24310A47005C526C /* shader.fs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = shader.fs; sourceTree = "<group>"; };
 		5B94756D24310C1B005C526C /* shader.vs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = shader.vs; sourceTree = "<group>"; };
-		5B94756F24310E8A005C526C /* test.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = test.txt; sourceTree = "<group>"; };
+		5B94757024323E41005C526C /* Window.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Window.cpp; sourceTree = "<group>"; };
+		5B94757124323E41005C526C /* Window.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Window.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,7 +85,8 @@
 				5B94755F242D7EBD005C526C /* Mesh.hpp */,
 				5B9475612430EC9B005C526C /* Shader.cpp */,
 				5B9475622430EC9B005C526C /* Shader.hpp */,
-				5B94756F24310E8A005C526C /* test.txt */,
+				5B94757024323E41005C526C /* Window.cpp */,
+				5B94757124323E41005C526C /* Window.hpp */,
 			);
 			path = OpenGLCourseApp;
 			sourceTree = "<group>";
@@ -168,6 +171,7 @@
 				5B947560242D7EBD005C526C /* Mesh.cpp in Sources */,
 				5B9475632430EC9B005C526C /* Shader.cpp in Sources */,
 				5B332E4923D5206D00494F35 /* main.cpp in Sources */,
+				5B94757224323E41005C526C /* Window.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
