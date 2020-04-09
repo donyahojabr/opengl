@@ -14,6 +14,7 @@
 		5B947560242D7EBD005C526C /* Mesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B94755E242D7EBD005C526C /* Mesh.cpp */; };
 		5B9475632430EC9B005C526C /* Shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B9475612430EC9B005C526C /* Shader.cpp */; };
 		5B94757224323E41005C526C /* Window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B94757024323E41005C526C /* Window.cpp */; };
+		5BE8522A243E5F5F001EAC83 /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BE85228243E5F5F001EAC83 /* Camera.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -43,6 +44,8 @@
 		5B94756D24310C1B005C526C /* shader.vs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = shader.vs; sourceTree = "<group>"; };
 		5B94757024323E41005C526C /* Window.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Window.cpp; sourceTree = "<group>"; };
 		5B94757124323E41005C526C /* Window.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Window.hpp; sourceTree = "<group>"; };
+		5BE85228243E5F5F001EAC83 /* Camera.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Camera.cpp; sourceTree = "<group>"; };
+		5BE85229243E5F5F001EAC83 /* Camera.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Camera.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +90,8 @@
 				5B9475622430EC9B005C526C /* Shader.hpp */,
 				5B94757024323E41005C526C /* Window.cpp */,
 				5B94757124323E41005C526C /* Window.hpp */,
+				5BE85228243E5F5F001EAC83 /* Camera.cpp */,
+				5BE85229243E5F5F001EAC83 /* Camera.hpp */,
 			);
 			path = OpenGLCourseApp;
 			sourceTree = "<group>";
@@ -170,6 +175,7 @@
 			files = (
 				5B947560242D7EBD005C526C /* Mesh.cpp in Sources */,
 				5B9475632430EC9B005C526C /* Shader.cpp in Sources */,
+				5BE8522A243E5F5F001EAC83 /* Camera.cpp in Sources */,
 				5B332E4923D5206D00494F35 /* main.cpp in Sources */,
 				5B94757224323E41005C526C /* Window.cpp in Sources */,
 			);

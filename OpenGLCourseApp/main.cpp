@@ -17,12 +17,17 @@
 #include "Mesh.hpp"
 #include "Shader.hpp"
 #include "Window.hpp"
+#include "Camera.hpp"
 
-const float toRadians = 3.14159265f / 180.0f;
+//const float toRadians = 3.14159265f / 180.0f;
 
 std::vector<Mesh*> meshList;
 std::vector<Shader> shaderList;
 Window mainWindow;
+Camera camera;
+
+GLfloat delatTime = 0.0f;
+GLfloat lastTime = 0.0f;
 
 //Vertex shader
 static const char* vShader = "shader.vs";
@@ -67,15 +72,24 @@ int main(){
     
     CreateObjects();
     CreateShaders();
+    camera = Camera(glm::vec3(0.0f,0.0f,0.0f), glm::vec3(0.0f,1.0f,0.0f), -90.0f,0.0f,5.0f,0.08f);
     
     glm::mat4 projection(1.0f);
     
-    GLuint uniformProjection =0, uniformModel =0;
+    GLuint uniformProjection =0, uniformModel =0, uniformView = 0;
     projection = glm::perspective(45.0f, (float)mainWindow.getBufferWidth()/(float)mainWindow.getBUfferHeight(), 0.1f, 100.0f);
 
     //loop until window closed
     while(!mainWindow.getShouldClose()){
+        
+        GLfloat now = glfwGetTime();
+        delatTime = now - lastTime;
+        lastTime = now;
+        
         glfwPollEvents(); //check for user inputs
+        camera.keyControl(mainWindow.getKeys(), delatTime);
+        camera.mouseControl(mainWindow.getXChange(), mainWindow.getYChange());
+        
         
         glClearColor(0.0f, 0.0f, 0.0f, 1.0f); //clears entire screen, to color you set (red)
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); //tells what we want to clear, which is an or of the color and the depth buffer
@@ -83,6 +97,7 @@ int main(){
         shaderList[0].UseShader();
         uniformModel = shaderList[0].GetModelLocation();
         uniformProjection = shaderList[0].GetProjectionLocation();
+        uniformView = shaderList[0].GetViewLocation();
         
         glm::mat4 model(1.0f);
        
@@ -91,6 +106,7 @@ int main(){
       
         glUniformMatrix4fv(uniformModel, 1, GL_FALSE,glm::value_ptr(model)); //false for transpose matrix
         glUniformMatrix4fv(uniformProjection, 1, GL_FALSE,glm::value_ptr(projection)); //false for transpose matrix
+        glUniformMatrix4fv(uniformView, 1, GL_FALSE,glm::value_ptr(camera.calculateViewMatrix())); //false for transpose matrix
         meshList[0]->renderMesh();
         
         model = glm::mat4(1.0f);
