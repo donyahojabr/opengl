@@ -1,3 +1,5 @@
+#define STB_IMAGE_IMPLEMENTATION
+
 #include <iostream>
 #include <stdio.h>
 #include <string.h>
@@ -18,6 +20,7 @@
 #include "Shader.hpp"
 #include "Window.hpp"
 #include "Camera.hpp"
+#include "Texture.hpp"
 
 //const float toRadians = 3.14159265f / 180.0f;
 
@@ -26,14 +29,17 @@ std::vector<Shader> shaderList;
 Window mainWindow;
 Camera camera;
 
+Texture brickTexture;
+Texture dirtTexture;
+
 GLfloat delatTime = 0.0f;
 GLfloat lastTime = 0.0f;
 
 //Vertex shader
-static const char* vShader = "shader.vs";
+static const char* vShader = "Shader/shader.vs";
 
 //fragment shader
-static const char* fShader = "shader.fs";
+static const char* fShader = "Shader/shader.fs";
 
 void CreateObjects(){
     
@@ -44,17 +50,21 @@ void CreateObjects(){
         0, 1, 2
     };
     
-    GLfloat vertices[] = {-1.0f,-1.0f,0.0f,
-        0.0f, -1.0f, 1.0f, //will add depth to pyramid
-        1.0f, -1.0f, 0.0f,
-        0.0f, 1.0f, 0.0f }; //defining one triange
+    GLfloat vertices[] = {
+        //x     y       z       u       v
+        -1.0f,-1.0f,0.0f,       0.0f,   0.0f,
+        0.0f, -1.0f, 1.0f,      0.5f,   0.0f,
+        1.0f, -1.0f, 0.0f,      1.0f,   0.0f,
+        0.0f, 1.0f, 0.0f,       0.5f,   1.0f
+        
+    };
 
     Mesh *obj1 = new Mesh();
-    obj1->createMesh(vertices, indices, 12, 12);
+    obj1->createMesh(vertices, indices, 20, 12);
     meshList.push_back(obj1);
     
     Mesh *obj2 = new Mesh();
-    obj2->createMesh(vertices, indices, 12, 12);
+    obj2->createMesh(vertices, indices, 20, 12);
     meshList.push_back(obj2);
 }
 
@@ -73,6 +83,12 @@ int main(){
     CreateObjects();
     CreateShaders();
     camera = Camera(glm::vec3(0.0f,0.0f,0.0f), glm::vec3(0.0f,1.0f,0.0f), -90.0f,0.0f,5.0f,0.08f);
+    
+    brickTexture = Texture("Textures/wall.png");
+    brickTexture.LoadTexture();
+    dirtTexture = Texture("Textures/sky.png");
+    dirtTexture.LoadTexture();
+    
     
     glm::mat4 projection(1.0f);
     
@@ -107,12 +123,16 @@ int main(){
         glUniformMatrix4fv(uniformModel, 1, GL_FALSE,glm::value_ptr(model)); //false for transpose matrix
         glUniformMatrix4fv(uniformProjection, 1, GL_FALSE,glm::value_ptr(projection)); //false for transpose matrix
         glUniformMatrix4fv(uniformView, 1, GL_FALSE,glm::value_ptr(camera.calculateViewMatrix())); //false for transpose matrix
+        
+        brickTexture.UseTexture();
         meshList[0]->renderMesh();
         
         model = glm::mat4(1.0f);
         model = glm::translate(model,glm::vec3(0.0f, 1.0f, -2.5f));
         model = glm::scale(model, glm::vec3(0.4f,0.4f,1.0));
         glUniformMatrix4fv(uniformModel, 1, GL_FALSE,glm::value_ptr(model)); //false for transpose matrix
+        
+        dirtTexture.UseTexture();
         meshList[1]->renderMesh();
         
         glUseProgram(0);

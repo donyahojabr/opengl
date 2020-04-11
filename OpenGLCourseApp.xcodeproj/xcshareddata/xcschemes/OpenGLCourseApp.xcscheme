@@ -36,7 +36,7 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "YES"
-      customWorkingDirectory = "/Users/donyahojabr/Documents/OpenGLCourseApp/OpenGLCourseApp/Shader"
+      customWorkingDirectory = "/Users/donyahojabr/Documents/OpenGLCourseApp/OpenGLCourseApp"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
