@@ -21,6 +21,7 @@
 #include "Window.hpp"
 #include "Camera.hpp"
 #include "Texture.hpp"
+#include "Light.hpp"
 
 //const float toRadians = 3.14159265f / 180.0f;
 
@@ -28,6 +29,7 @@ std::vector<Mesh*> meshList;
 std::vector<Shader> shaderList;
 Window mainWindow;
 Camera camera;
+Light mainLight;
 
 Texture brickTexture;
 Texture dirtTexture;
@@ -89,10 +91,12 @@ int main(){
     dirtTexture = Texture("Textures/sky.png");
     dirtTexture.LoadTexture();
     
+    mainLight = Light(1.0f,1.0f,1.0f,0.2f);
+    
     
     glm::mat4 projection(1.0f);
     
-    GLuint uniformProjection =0, uniformModel =0, uniformView = 0;
+    GLuint uniformProjection =0, uniformModel =0, uniformView = 0, uniformAmbientIntensity = 0, uniformAmbientColour = 0;
     projection = glm::perspective(45.0f, (float)mainWindow.getBufferWidth()/(float)mainWindow.getBUfferHeight(), 0.1f, 100.0f);
 
     //loop until window closed
@@ -114,6 +118,10 @@ int main(){
         uniformModel = shaderList[0].GetModelLocation();
         uniformProjection = shaderList[0].GetProjectionLocation();
         uniformView = shaderList[0].GetViewLocation();
+        uniformAmbientColour = shaderList[0].GetAmbientColourLocation();
+        uniformAmbientIntensity = shaderList[0].GetAmbientIntensityLocation();
+        
+        mainLight.UseLight(uniformAmbientIntensity, uniformAmbientColour);
         
         glm::mat4 model(1.0f);
        

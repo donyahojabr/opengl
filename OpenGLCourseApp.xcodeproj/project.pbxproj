@@ -16,6 +16,7 @@
 		5B94757224323E41005C526C /* Window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B94757024323E41005C526C /* Window.cpp */; };
 		5BE8522A243E5F5F001EAC83 /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BE85228243E5F5F001EAC83 /* Camera.cpp */; };
 		5BE8522D244103F7001EAC83 /* Texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BE8522B244103F7001EAC83 /* Texture.cpp */; };
+		5BE8523A244400FC001EAC83 /* Light.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BE85238244400FC001EAC83 /* Light.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -49,6 +50,8 @@
 		5BE85229243E5F5F001EAC83 /* Camera.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Camera.hpp; sourceTree = "<group>"; };
 		5BE8522B244103F7001EAC83 /* Texture.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Texture.cpp; sourceTree = "<group>"; };
 		5BE8522C244103F7001EAC83 /* Texture.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Texture.hpp; sourceTree = "<group>"; };
+		5BE85238244400FC001EAC83 /* Light.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Light.cpp; sourceTree = "<group>"; };
+		5BE85239244400FC001EAC83 /* Light.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Light.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +100,8 @@
 				5BE85229243E5F5F001EAC83 /* Camera.hpp */,
 				5BE8522B244103F7001EAC83 /* Texture.cpp */,
 				5BE8522C244103F7001EAC83 /* Texture.hpp */,
+				5BE85238244400FC001EAC83 /* Light.cpp */,
+				5BE85239244400FC001EAC83 /* Light.hpp */,
 			);
 			path = OpenGLCourseApp;
 			sourceTree = "<group>";
@@ -178,6 +183,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BE8523A244400FC001EAC83 /* Light.cpp in Sources */,
 				5B947560242D7EBD005C526C /* Mesh.cpp in Sources */,
 				5B9475632430EC9B005C526C /* Shader.cpp in Sources */,
 				5BE8522A243E5F5F001EAC83 /* Camera.cpp in Sources */,

@@ -71,17 +71,21 @@ void Shader::CompileShader(const char *vertexCode, const char *fragmentCode){
         return;
     }
 
-    glValidateProgram(shaderID);
-    glGetProgramiv(shaderID, GL_VALIDATE_STATUS, &result);
-    if (!result){
-        glGetProgramInfoLog(shaderID, sizeof(eLog), NULL, eLog);
-        printf("Error validating program: '%s'\n", eLog);
-        //return;
-    }
+    
+//** Causes error on Mac **
+//    glValidateProgram(shaderID);
+//    glGetProgramiv(shaderID, GL_VALIDATE_STATUS, &result);
+//    if (!result){
+//        glGetProgramInfoLog(shaderID, sizeof(eLog), NULL, eLog);
+//        printf("Error validating program: '%s'\n", eLog);
+//        //return;
+//    }
     
     uniformModel = glGetUniformLocation(shaderID, "model");
     uniformProjection = glGetUniformLocation(shaderID, "projection"); //name in shader
     uniformView = glGetUniformLocation(shaderID, "view");
+    uniformAmbientColour = glGetUniformLocation(shaderID, "directionalLight.colour");
+    uniformAmbientIntensity = glGetUniformLocation(shaderID, "directionalLight.ambientIntensity");
 }
 
 GLuint Shader::GetProjectionLocation(){
@@ -94,6 +98,14 @@ GLuint Shader::GetModelLocation(){
 
 GLuint Shader::GetViewLocation(){
     return uniformView;
+}
+
+GLuint Shader::GetAmbientColourLocation(){
+    return uniformAmbientColour;
+}
+
+GLuint Shader::GetAmbientIntensityLocation(){
+    return uniformAmbientIntensity;
 }
 
 void Shader::UseShader(){
