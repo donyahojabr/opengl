@@ -30,10 +30,12 @@ void Mesh::createMesh(GLfloat *vertices, unsigned int *indices, unsigned int num
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices[0])*numOfVertices, vertices, GL_STATIC_DRAW);
 
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(vertices[0])*5,0);//layout loc, sizeof each value passed in (x,y,z), type of value, normalize value (true/false), stride, offset)
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(vertices[0])*8,0);//layout loc, sizeof each value passed in (x,y,z), type of value, normalize value (true/false), stride, offset)
     glEnableVertexAttribArray(0); //enable the 0 location in the array
-    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(vertices[0])*5, (void*)(sizeof(vertices[0])*3));
+    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(vertices[0])*8, (void*)(sizeof(vertices[0])*3));
     glEnableVertexAttribArray(1);
+    glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, sizeof(vertices[0])*8, (void*)(sizeof(vertices[0])*5));
+    glEnableVertexAttribArray(2);
 
     glBindBuffer(GL_ARRAY_BUFFER, 0); //unbinding
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
