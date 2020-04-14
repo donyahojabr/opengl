@@ -19,7 +19,7 @@ void main()
     
     TexCoord = tex;
     
-    Normal = mat3(transpose(inverse(model)))*norm;
+    Normal = mat3(transpose(inverse(model))) * norm;
 }
 
 
