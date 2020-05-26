@@ -12,11 +12,11 @@ DirectionalLight::DirectionalLight() : Light(){ //calls super constructor first
     direction = glm::vec3(0.0f,-1.0f,0.0f);
 }
 
-DirectionalLight::DirectionalLight(GLfloat red, GLfloat green, GLfloat blue, GLfloat aIntensity,GLfloat xDir, GLfloat yDir, GLfloat zDir, GLfloat dIntensity ){
-    colour = glm::vec3(red,green,blue);
-    ambientIntensity = aIntensity;
+DirectionalLight::DirectionalLight(GLfloat red, GLfloat green, GLfloat blue,
+                                   GLfloat aIntensity, GLfloat dIntensity,
+                                   GLfloat xDir, GLfloat yDir, GLfloat zDir) : Light(red, green, blue, aIntensity, dIntensity)
+{
     direction = glm::vec3(xDir,yDir,zDir);
-    diffuseIntensity = dIntensity;
 }
 
 void DirectionalLight::UseLight(GLuint ambientIntensityLocation, GLuint ambientColourLocation,GLuint diffuseIntensityLocation, GLuint directionLocation){

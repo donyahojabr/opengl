@@ -19,6 +19,7 @@
 		5BE8523A244400FC001EAC83 /* Light.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BE85238244400FC001EAC83 /* Light.cpp */; };
 		5BE8523D2447EB05001EAC83 /* Material.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BE8523B2447EB05001EAC83 /* Material.cpp */; };
 		5BEDFE1324645F85008B2FC9 /* DirectionalLight.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BEDFE1124645F85008B2FC9 /* DirectionalLight.cpp */; };
+		5BEDFE16247D2C3C008B2FC9 /* PointLight.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BEDFE14247D2C3C008B2FC9 /* PointLight.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -58,6 +59,8 @@
 		5BE8523C2447EB05001EAC83 /* Material.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Material.hpp; sourceTree = "<group>"; };
 		5BEDFE1124645F85008B2FC9 /* DirectionalLight.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DirectionalLight.cpp; sourceTree = "<group>"; };
 		5BEDFE1224645F85008B2FC9 /* DirectionalLight.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = DirectionalLight.hpp; sourceTree = "<group>"; };
+		5BEDFE14247D2C3C008B2FC9 /* PointLight.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PointLight.cpp; sourceTree = "<group>"; };
+		5BEDFE15247D2C3C008B2FC9 /* PointLight.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PointLight.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +115,8 @@
 				5BE8523C2447EB05001EAC83 /* Material.hpp */,
 				5BEDFE1124645F85008B2FC9 /* DirectionalLight.cpp */,
 				5BEDFE1224645F85008B2FC9 /* DirectionalLight.hpp */,
+				5BEDFE14247D2C3C008B2FC9 /* PointLight.cpp */,
+				5BEDFE15247D2C3C008B2FC9 /* PointLight.hpp */,
 			);
 			path = OpenGLCourseApp;
 			sourceTree = "<group>";
@@ -194,6 +199,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5BE8523A244400FC001EAC83 /* Light.cpp in Sources */,
+				5BEDFE16247D2C3C008B2FC9 /* PointLight.cpp in Sources */,
 				5B947560242D7EBD005C526C /* Mesh.cpp in Sources */,
 				5BEDFE1324645F85008B2FC9 /* DirectionalLight.cpp in Sources */,
 				5B9475632430EC9B005C526C /* Shader.cpp in Sources */,

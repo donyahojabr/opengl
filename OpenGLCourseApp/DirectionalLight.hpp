@@ -5,14 +5,10 @@
 //  Created by Donya Hojabr on 2020-05-07.
 //  Copyright © 2020 Donya Hojabr. All rights reserved.
 //
+#pragma once
 
-#ifndef DirectionalLight_hpp
-#define DirectionalLight_hpp
-
-#include <stdio.h>
 #include "Light.hpp"
 
-#endif /* DirectionalLight_hpp */
 
 class DirectionalLight :
     public Light
@@ -20,11 +16,13 @@ class DirectionalLight :
 public:
     DirectionalLight();
     
-    DirectionalLight(GLfloat red, GLfloat green, GLfloat blue, GLfloat aIntensity, GLfloat xDir, GLfloat yDir, GLfloat zDir, GLfloat dIntensity);
+    DirectionalLight(GLfloat red, GLfloat green, GLfloat blue,
+                     GLfloat aIntensity, GLfloat dIntensity,
+                     GLfloat xDir, GLfloat yDir, GLfloat zDir);
     
     void UseLight(GLuint ambientIntensityLocation, GLuint ambientColourLocation, GLuint diffuseIntensityLocation, GLuint directionLocation);
     
-    ~DirectionalLight();
+//    ~DirectionalLight();
 
 private:
     glm::vec3 direction;

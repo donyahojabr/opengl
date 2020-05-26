@@ -5,9 +5,7 @@
 //  Created by Donya Hojabr on 2020-03-29.
 //  Copyright © 2020 Donya Hojabr. All rights reserved.
 //
-
-#ifndef Shader_hpp
-#define Shader_hpp
+#pragma once
 
 #include <stdio.h>
 #include <string.h>
@@ -15,8 +13,9 @@
 #include <fstream>
 
 #include <GL/glew.h>
+#include "DirectionalLight.hpp"
+#include "PointLight.hpp"
 
-#endif /* Shader_hpp */
 
 class Shader{
 public:
@@ -44,9 +43,19 @@ public:
     ~Shader();
     
 private:
+    
+    int pointLightCount; //we need this because each PL will have a uniformLoc
+    
     GLuint shaderID, uniformProjection, uniformModel, uniformView, uniformEyePosition,
-    uniformAmbientIntensity, uniformAmbientColour, uniformDiffuseIntensity, uniformDirection,
     uniformSpecularIntensity, uniformShininess;
+    
+    struct {
+        GLuint uniformColour;
+        GLuint uniformAmbientIntensity;
+        GLuint uniformDiffuseIntensity;
+        
+        GLuint uniformDirection;
+    } uniformDirectionalLight; //instance of struct, not name
     
     void CompileShader(const char* vertexCode, const char* fragmentCode);
     void AddShader(GLuint theProgram, const char* shaderCode, GLenum shaderType);

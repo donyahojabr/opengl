@@ -6,20 +6,17 @@
 //  Copyright © 2020 Donya Hojabr. All rights reserved.
 //
 
-#ifndef Light_hpp
-#define Light_hpp
+#pragma once
 
-#include <stdio.h>
 #include <GL/glew.h>
 #include <glm/glm.hpp>
-
-#endif /* Light_hpp */
 
 class Light{
 public:
     Light();
     
-    Light(GLfloat red, GLfloat green, GLfloat blue, GLfloat aIntensity, GLfloat dIntensity);
+    Light(GLfloat red, GLfloat green, GLfloat blue,
+          GLfloat aIntensity, GLfloat dIntensity);
     
     ~Light();
     

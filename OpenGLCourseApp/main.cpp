@@ -21,7 +21,7 @@
 #include "Window.hpp"
 #include "Camera.hpp"
 #include "Texture.hpp"
-#include "Light.hpp"
+#include "DirectionalLight.hpp"
 #include "Material.hpp"
 
 ////const float toRadians = 3.14159265f / 180.0f;
@@ -30,7 +30,7 @@ std::vector<Mesh*> meshList;
 std::vector<Shader> shaderList;
 Window mainWindow;
 Camera camera;
-Light mainLight;
+DirectionalLight mainLight;
 
 Texture brickTexture;
 Texture dirtTexture;
@@ -135,8 +135,9 @@ int main(){
     shinyMaterial = Material(1.0f, 32);
     dullMaterial = Material(0.3f, 4);
 
-    mainLight = Light(1.0f,1.0f,1.0f,0.1f,
-                      2.0f,-1.0f,-2.0f,0.1f);
+    mainLight = DirectionalLight(1.0f,1.0f,1.0f, //color
+                                  0.1f, 0.3f, //aIntensity, dIntensity
+                                  0.0f, 0.0f, -1.0f); //x,y,z dirs
 
 
     glm::mat4 projection(1.0f);
