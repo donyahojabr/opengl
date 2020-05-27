@@ -61,6 +61,7 @@
 		5BEDFE1224645F85008B2FC9 /* DirectionalLight.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = DirectionalLight.hpp; sourceTree = "<group>"; };
 		5BEDFE14247D2C3C008B2FC9 /* PointLight.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PointLight.cpp; sourceTree = "<group>"; };
 		5BEDFE15247D2C3C008B2FC9 /* PointLight.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PointLight.hpp; sourceTree = "<group>"; };
+		5BEDFE17247E85FF008B2FC9 /* CommonValues.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonValues.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +118,7 @@
 				5BEDFE1224645F85008B2FC9 /* DirectionalLight.hpp */,
 				5BEDFE14247D2C3C008B2FC9 /* PointLight.cpp */,
 				5BEDFE15247D2C3C008B2FC9 /* PointLight.hpp */,
+				5BEDFE17247E85FF008B2FC9 /* CommonValues.h */,
 			);
 			path = OpenGLCourseApp;
 			sourceTree = "<group>";

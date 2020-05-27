@@ -12,6 +12,8 @@
 #include <iostream>
 #include <fstream>
 
+#include "CommonValues.h"
+
 #include <GL/glew.h>
 #include "DirectionalLight.hpp"
 #include "PointLight.hpp"
@@ -37,6 +39,9 @@ public:
     GLuint GetShininessLocation();
     GLuint GetEyePositionLocation();
     
+    void setDirectionalLight(DirectionalLight * dLight);
+    void setPointLights(PointLight * pLight, unsigned int lightCount);
+    
     void UseShader();
     void clearShader();
     
@@ -56,6 +61,19 @@ private:
         
         GLuint uniformDirection;
     } uniformDirectionalLight; //instance of struct, not name
+    
+    GLuint uniformPointLightCount;
+    
+    struct {
+        GLuint uniformColour;
+        GLuint uniformAmbientIntensity;
+        GLuint uniformDiffuseIntensity;
+        
+        GLuint uniformPosition;
+        GLuint uniformConstant;
+        GLuint uniformLinear;
+        GLuint uniformExponent;
+    } uniformPointLight[MAX_POINT_LIGHTS]; //need to have a max number
     
     void CompileShader(const char* vertexCode, const char* fragmentCode);
     void AddShader(GLuint theProgram, const char* shaderCode, GLenum shaderType);
