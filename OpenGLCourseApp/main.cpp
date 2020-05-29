@@ -25,6 +25,7 @@
 #include "Texture.hpp"
 #include "DirectionalLight.hpp"
 #include "PointLight.hpp"
+#include "SpotLight.hpp"
 #include "Material.hpp"
 
 ////const float toRadians = 3.14159265f / 180.0f;
@@ -35,6 +36,7 @@ Window mainWindow;
 Camera camera;
 DirectionalLight mainLight;
 PointLight pointLights[MAX_POINT_LIGHTS];
+SpotLight spotLights[MAX_SPOT_LIGHTS];
 
 Texture brickTexture;
 Texture dirtTexture;
@@ -158,24 +160,33 @@ int main(){
     dullMaterial = Material(0.3f, 4);
 
     mainLight = DirectionalLight(1.0f,1.0f,1.0f, //color
-                                  0.1f, 0.3f, //aIntensity, dIntensity
+                                  0.0f, 0.0f, //aIntensity, dIntensity
                                   0.0f, 0.0f, -1.0f); //x,y,z dirs
     
     unsigned int pointLightCount = 0;
     
     pointLights[0] = PointLight(0.0f, 0.0f, 1.0f,
-                                0.1f, 1.0f,
-                                4.0, 0.0f, 0.0f,
+                                0.0f, 0.1f,
+                                0.0, 0.0f, 0.0f,
                                 0.3f, 0.2f, 0.1f);
 
-    pointLightCount++;
+    //pointLightCount++;
     
     pointLights[1] = PointLight(0.0f, 1.0f, 0.0f,
-                                0.0f, 1.0f,
+                                0.0f, 0.1f,
                                 -4.0, 2.0f, 0.0f,
                                 0.3f, 0.1f, 0.1f);
 
-    pointLightCount++;
+    //pointLightCount++;
+    
+    unsigned int spotLightCount = 0;
+    spotLights[0] = SpotLight(1.0f, 1.0f, 1.0f,
+                              0.0f, 2.0f,
+                              0.0, 0.0f, 0.0f,
+                              0.0f, -1.0f, 0.0f,
+                              0.3f, 0.2f, 0.1f,
+                              20.0f);
+    spotLightCount++;
     
     glm::mat4 projection(1.0f);
 
@@ -207,6 +218,7 @@ int main(){
 
         shaderList[0].setDirectionalLight(&mainLight);
         shaderList[0].setPointLights(pointLights, pointLightCount);
+        shaderList[0].setSpotLights(spotLights, spotLightCount);
         
         glUniformMatrix4fv(uniformView, 1, GL_FALSE,glm::value_ptr(camera.calculateViewMatrix())); //false for transpose matrix
         glUniformMatrix4fv(uniformProjection, 1, GL_FALSE,glm::value_ptr(projection)); //false for transpose matrix
