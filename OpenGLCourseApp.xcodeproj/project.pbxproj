@@ -21,6 +21,7 @@
 		5BEDFE1324645F85008B2FC9 /* DirectionalLight.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BEDFE1124645F85008B2FC9 /* DirectionalLight.cpp */; };
 		5BEDFE16247D2C3C008B2FC9 /* PointLight.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BEDFE14247D2C3C008B2FC9 /* PointLight.cpp */; };
 		5BEDFE1A24811F14008B2FC9 /* SpotLight.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5BEDFE1824811F14008B2FC9 /* SpotLight.cpp */; };
+		5BEDFE272486EE32008B2FC9 /* libassimp.3.3.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BEDFE262486EE30008B2FC9 /* libassimp.3.3.1.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -65,6 +66,10 @@
 		5BEDFE17247E85FF008B2FC9 /* CommonValues.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonValues.h; sourceTree = "<group>"; };
 		5BEDFE1824811F14008B2FC9 /* SpotLight.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SpotLight.cpp; sourceTree = "<group>"; };
 		5BEDFE1924811F14008B2FC9 /* SpotLight.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SpotLight.hpp; sourceTree = "<group>"; };
+		5BEDFE1B24867D0C008B2FC9 /* libassimpd.5.0.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libassimpd.5.0.1.dylib; path = ../assimp/build/bin/Debug/libassimpd.5.0.1.dylib; sourceTree = "<group>"; };
+		5BEDFE1D24868B69008B2FC9 /* 5.0.1 */ = {isa = PBXFileReference; lastKnownFileType = folder; name = 5.0.1; path = ../../../../usr/local/Cellar/assimp/5.0.1; sourceTree = "<group>"; };
+		5BEDFE1F24868BAA008B2FC9 /* libassimp.5.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libassimp.5.0.0.dylib; path = ../../../../usr/local/Cellar/assimp/5.0.1/lib/libassimp.5.0.0.dylib; sourceTree = "<group>"; };
+		5BEDFE262486EE30008B2FC9 /* libassimp.3.3.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libassimp.3.3.1.dylib; path = ../library/libassimp.3.3.1.dylib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BEDFE272486EE32008B2FC9 /* libassimp.3.3.1.dylib in Frameworks */,
 				5B332E5723D521F200494F35 /* libglfw.3.3.dylib in Frameworks */,
 				5B332E5323D521BF00494F35 /* libGLEW.2.1.0.dylib in Frameworks */,
 				5B332E5123D5213500494F35 /* OpenGL.framework in Frameworks */,
@@ -131,6 +137,10 @@
 		5B332E4F23D5213500494F35 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5BEDFE262486EE30008B2FC9 /* libassimp.3.3.1.dylib */,
+				5BEDFE1F24868BAA008B2FC9 /* libassimp.5.0.0.dylib */,
+				5BEDFE1D24868B69008B2FC9 /* 5.0.1 */,
+				5BEDFE1B24867D0C008B2FC9 /* libassimpd.5.0.1.dylib */,
 				5B332E5623D521F100494F35 /* libglfw.3.3.dylib */,
 				5B332E5423D521D000494F35 /* Cellar */,
 				5B332E5223D521BF00494F35 /* libGLEW.2.1.0.dylib */,
@@ -335,11 +345,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				HEADER_SEARCH_PATHS = /usr/local/include;
+				HEADER_SEARCH_PATHS = (
+					/usr/local/include,
+					/usr/local/Cellar/assimp/5.0.1/include,
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/local/Cellar/glew/2.1.0/lib,
 					/usr/local/Cellar/glfw/3.3.1/lib,
+					/Users/donyahojabr/Documents/library,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -349,11 +363,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				HEADER_SEARCH_PATHS = /usr/local/include;
+				HEADER_SEARCH_PATHS = (
+					/usr/local/include,
+					/usr/local/Cellar/assimp/5.0.1/include,
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/local/Cellar/glew/2.1.0/lib,
 					/usr/local/Cellar/glfw/3.3.1/lib,
+					/Users/donyahojabr/Documents/library,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

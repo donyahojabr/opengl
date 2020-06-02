@@ -16,6 +16,8 @@
 //GLFW
 #include <GLFW/glfw3.h>
 
+#include <assimp/Importer.hpp>
+
 #include "CommonValues.h"
 
 #include "Mesh.hpp"
@@ -200,6 +202,8 @@ int main(){
 
     GLuint uniformProjection =0, uniformModel =0, uniformView = 0, uniformEyePosition = 0, uniformSpecularIntensity = 0, uniformShininess = 0;
     projection = glm::perspective(45.0f, (float)mainWindow.getBufferWidth()/(float)mainWindow.getBufferHeight(), 0.1f, 100.0f);
+    
+    Assimp::Importer importer;
 
     //loop until window closed
     while(!mainWindow.getShouldClose()){
