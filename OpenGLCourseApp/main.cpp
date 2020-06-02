@@ -170,21 +170,29 @@ int main(){
                                 0.0, 0.0f, 0.0f,
                                 0.3f, 0.2f, 0.1f);
 
-    //pointLightCount++;
+    pointLightCount++;
     
     pointLights[1] = PointLight(0.0f, 1.0f, 0.0f,
                                 0.0f, 0.1f,
                                 -4.0, 2.0f, 0.0f,
                                 0.3f, 0.1f, 0.1f);
 
-    //pointLightCount++;
+    pointLightCount++;
     
     unsigned int spotLightCount = 0;
     spotLights[0] = SpotLight(1.0f, 1.0f, 1.0f,
                               0.0f, 2.0f,
                               0.0, 0.0f, 0.0f,
                               0.0f, -1.0f, 0.0f,
-                              0.3f, 0.2f, 0.1f,
+                              1.0f, 0.0f, 0.0f,
+                              20.0f);
+    spotLightCount++;
+    
+    spotLights[1] = SpotLight(1.0f, 1.0f, 1.0f,
+                              0.0f, 1.0f,
+                              0.0, 1.5f, 0.0f,
+                              -100.0f, -1.0f, 0.0f,
+                              1.0f, 0.0f, 0.0f,
                               20.0f);
     spotLightCount++;
     
@@ -215,6 +223,10 @@ int main(){
         uniformEyePosition = shaderList[0].GetEyePositionLocation();
         uniformSpecularIntensity = shaderList[0].GetSpecularIntensityLocation();
         uniformShininess = shaderList[0].GetShininessLocation();
+        
+        glm::vec3 lowerLight = camera.getCameraPosition();
+        lowerLight.y -= 0.5f;
+        spotLights[0].SetFlash(lowerLight, camera.getCameraDirection());
 
         shaderList[0].setDirectionalLight(&mainLight);
         shaderList[0].setPointLights(pointLights, pointLightCount);
