@@ -11,6 +11,7 @@
 		5B332E5123D5213500494F35 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B332E5023D5213500494F35 /* OpenGL.framework */; };
 		5B332E5323D521BF00494F35 /* libGLEW.2.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B332E5223D521BF00494F35 /* libGLEW.2.1.0.dylib */; };
 		5B332E5723D521F200494F35 /* libglfw.3.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B332E5623D521F100494F35 /* libglfw.3.3.dylib */; };
+		5B3E30A42487C2AF001B8722 /* Model.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B3E30A22487C2AF001B8722 /* Model.cpp */; };
 		5B947560242D7EBD005C526C /* Mesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B94755E242D7EBD005C526C /* Mesh.cpp */; };
 		5B9475632430EC9B005C526C /* Shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B9475612430EC9B005C526C /* Shader.cpp */; };
 		5B94757224323E41005C526C /* Window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B94757024323E41005C526C /* Window.cpp */; };
@@ -43,6 +44,8 @@
 		5B332E5223D521BF00494F35 /* libGLEW.2.1.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libGLEW.2.1.0.dylib; path = ../../../../usr/local/Cellar/glew/2.1.0/lib/libGLEW.2.1.0.dylib; sourceTree = "<group>"; };
 		5B332E5423D521D000494F35 /* Cellar */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Cellar; path = ../../../../usr/local/Cellar; sourceTree = "<group>"; };
 		5B332E5623D521F100494F35 /* libglfw.3.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.3.dylib; path = ../../../../usr/local/Cellar/glfw/3.3.1/lib/libglfw.3.3.dylib; sourceTree = "<group>"; };
+		5B3E30A22487C2AF001B8722 /* Model.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Model.cpp; sourceTree = "<group>"; };
+		5B3E30A32487C2AF001B8722 /* Model.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Model.hpp; sourceTree = "<group>"; };
 		5B94755E242D7EBD005C526C /* Mesh.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Mesh.cpp; sourceTree = "<group>"; };
 		5B94755F242D7EBD005C526C /* Mesh.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Mesh.hpp; sourceTree = "<group>"; };
 		5B9475612430EC9B005C526C /* Shader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Shader.cpp; sourceTree = "<group>"; };
@@ -130,6 +133,8 @@
 				5BEDFE17247E85FF008B2FC9 /* CommonValues.h */,
 				5BEDFE1824811F14008B2FC9 /* SpotLight.cpp */,
 				5BEDFE1924811F14008B2FC9 /* SpotLight.hpp */,
+				5B3E30A22487C2AF001B8722 /* Model.cpp */,
+				5B3E30A32487C2AF001B8722 /* Model.hpp */,
 			);
 			path = OpenGLCourseApp;
 			sourceTree = "<group>";
@@ -218,6 +223,7 @@
 				5BE8523A244400FC001EAC83 /* Light.cpp in Sources */,
 				5BEDFE16247D2C3C008B2FC9 /* PointLight.cpp in Sources */,
 				5BEDFE1A24811F14008B2FC9 /* SpotLight.cpp in Sources */,
+				5B3E30A42487C2AF001B8722 /* Model.cpp in Sources */,
 				5B947560242D7EBD005C526C /* Mesh.cpp in Sources */,
 				5BEDFE1324645F85008B2FC9 /* DirectionalLight.cpp in Sources */,
 				5B9475632430EC9B005C526C /* Shader.cpp in Sources */,
