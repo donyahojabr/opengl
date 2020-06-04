@@ -6,13 +6,10 @@
 //  Copyright © 2020 Donya Hojabr. All rights reserved.
 //
 
-#ifndef Mesh_hpp
-#define Mesh_hpp
-
+#pragma once
 #include <GL/glew.h>
 #include <stdio.h>
 
-#endif /* Mesh_hpp */
 
 class Mesh{
 

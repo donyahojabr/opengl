@@ -1,3 +1,4 @@
+#pragma once
 #define STB_IMAGE_IMPLEMENTATION
 
 #include <iostream>
@@ -29,6 +30,7 @@
 #include "PointLight.hpp"
 #include "SpotLight.hpp"
 #include "Material.hpp"
+#include "Model.hpp"
 
 ////const float toRadians = 3.14159265f / 180.0f;
 
@@ -46,6 +48,9 @@ Texture plainTexture;
 
 Material shinyMaterial;
 Material dullMaterial;
+
+Model cat;
+Model plant;
 
 GLfloat deltaTime = 0.0f;
 GLfloat lastTime = 0.0f;
@@ -160,6 +165,9 @@ int main(){
     
     shinyMaterial = Material(1.0f, 32);
     dullMaterial = Material(0.3f, 4);
+    
+    cat = Model();
+    cat.LoadModel("Models/indoor_plant_02.obj");
 
     mainLight = DirectionalLight(1.0f,1.0f,1.0f, //color
                                   0.0f, 0.0f, //aIntensity, dIntensity
@@ -267,6 +275,24 @@ int main(){
         plainTexture.UseTexture();
         shinyMaterial.UseMaterial(uniformSpecularIntensity, uniformShininess);
         meshList[2]->renderMesh();
+        
+        model = glm::mat4(1.0f);
+        model = glm::translate(model,glm::vec3(0.0f, 4.0f, -2.5f));
+//        model = glm::scale(model, glm::vec3(0.001f,0.001f,0.001));
+        
+        glUniformMatrix4fv(uniformModel, 1, GL_FALSE,glm::value_ptr(model)); //false for transpose matrix
+
+        dirtTexture.UseTexture();
+        dullMaterial.UseMaterial(uniformSpecularIntensity, uniformShininess);
+        meshList[1]->renderMesh();
+                
+        model = glm::mat4(1.0f);
+        model = glm::translate(model,glm::vec3(0.0f, -2.0f, 0.0f));
+
+        glUniformMatrix4fv(uniformModel, 1, GL_FALSE,glm::value_ptr(model)); //false for transpose matrix
+
+        shinyMaterial.UseMaterial(uniformSpecularIntensity, uniformShininess);
+        cat.RenderModel();
 
         glUseProgram(0);
 
