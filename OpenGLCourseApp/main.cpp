@@ -49,8 +49,8 @@ Texture plainTexture;
 Material shinyMaterial;
 Material dullMaterial;
 
-Model cat;
-Model plant;
+Model plane;
+Model house;
 
 GLfloat deltaTime = 0.0f;
 GLfloat lastTime = 0.0f;
@@ -160,17 +160,21 @@ int main(){
     brickTexture.LoadTexture();
     dirtTexture = Texture("Textures/sky.png");
     dirtTexture.LoadTexture();
-    plainTexture = Texture("Textures/plain.png");
-    plainTexture.LoadTexture();
+    plainTexture = Texture("Textures/grass.png");
+    plainTexture.LoadTextureA();
     
     shinyMaterial = Material(1.0f, 32);
     dullMaterial = Material(0.3f, 4);
     
-    cat = Model();
-    cat.LoadModel("Models/indoor_plant_02.obj");
+    plane = Model();
+    plane.LoadModel("Models/11803_Airplane_v1_l1.obj");
+    house = Model();
+    house.LoadModel("Models/farmhouse_obj.obj");
+    
+    
 
     mainLight = DirectionalLight(1.0f,1.0f,1.0f, //color
-                                  0.0f, 0.0f, //aIntensity, dIntensity
+                                  0.4f, 0.2f, //aIntensity, dIntensity
                                   0.0f, 0.0f, -1.0f); //x,y,z dirs
     
     unsigned int pointLightCount = 0;
@@ -190,21 +194,21 @@ int main(){
     pointLightCount++;
     
     unsigned int spotLightCount = 0;
-    spotLights[0] = SpotLight(1.0f, 1.0f, 1.0f,
-                              0.0f, 2.0f,
-                              0.0, 0.0f, 0.0f,
-                              0.0f, -1.0f, 0.0f,
-                              1.0f, 0.0f, 0.0f,
-                              20.0f);
-    spotLightCount++;
-    
-    spotLights[1] = SpotLight(1.0f, 1.0f, 1.0f,
-                              0.0f, 1.0f,
-                              0.0, 1.5f, 0.0f,
-                              -100.0f, -1.0f, 0.0f,
-                              1.0f, 0.0f, 0.0f,
-                              20.0f);
-    spotLightCount++;
+//    spotLights[0] = SpotLight(1.0f, 1.0f, 1.0f,
+//                              0.0f, 2.0f,
+//                              0.0, 0.0f, 0.0f,
+//                              0.0f, -1.0f, 0.0f,
+//                              1.0f, 0.0f, 0.0f,
+//                              20.0f);
+//    spotLightCount++;
+//    
+//    spotLights[1] = SpotLight(1.0f, 1.0f, 1.0f,
+//                              0.0f, 1.0f,
+//                              0.0, 1.5f, 0.0f,
+//                              -100.0f, -1.0f, 0.0f,
+//                              1.0f, 0.0f, 0.0f,
+//                              20.0f);
+//    spotLightCount++;
     
     glm::mat4 projection(1.0f);
 
@@ -275,24 +279,27 @@ int main(){
         plainTexture.UseTexture();
         shinyMaterial.UseMaterial(uniformSpecularIntensity, uniformShininess);
         meshList[2]->renderMesh();
-        
-        model = glm::mat4(1.0f);
-        model = glm::translate(model,glm::vec3(0.0f, 4.0f, -2.5f));
-//        model = glm::scale(model, glm::vec3(0.001f,0.001f,0.001));
-        
-        glUniformMatrix4fv(uniformModel, 1, GL_FALSE,glm::value_ptr(model)); //false for transpose matrix
-
-        dirtTexture.UseTexture();
-        dullMaterial.UseMaterial(uniformSpecularIntensity, uniformShininess);
-        meshList[1]->renderMesh();
                 
         model = glm::mat4(1.0f);
-        model = glm::translate(model,glm::vec3(0.0f, -2.0f, 0.0f));
+        model = glm::translate(model,glm::vec3(0.0f, 5.0f, 0.0f));
+        model = glm::rotate(model, glm::radians(270.0f), glm::vec3(1.0f,0.0f,0.0f));
+        model = glm::scale(model, glm::vec3(0.001f,0.001f,0.001f));
 
         glUniformMatrix4fv(uniformModel, 1, GL_FALSE,glm::value_ptr(model)); //false for transpose matrix
 
         shinyMaterial.UseMaterial(uniformSpecularIntensity, uniformShininess);
-        cat.RenderModel();
+        plane.RenderModel();
+        
+        model = glm::mat4(1.0f);
+        model = glm::translate(model,glm::vec3(5.0f, -2.0f, -1.0f));
+        model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f,1.0f,0.0f));
+        model = glm::scale(model, glm::vec3(0.05f,0.05f,0.05f));
+
+        glUniformMatrix4fv(uniformModel, 1, GL_FALSE,glm::value_ptr(model)); //false for transpose matrix
+
+        shinyMaterial.UseMaterial(uniformSpecularIntensity, uniformShininess);
+        house.RenderModel();
+
 
         glUseProgram(0);
 
