@@ -12,6 +12,7 @@
 		5B332E5323D521BF00494F35 /* libGLEW.2.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B332E5223D521BF00494F35 /* libGLEW.2.1.0.dylib */; };
 		5B332E5723D521F200494F35 /* libglfw.3.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B332E5623D521F100494F35 /* libglfw.3.3.dylib */; };
 		5B3E30A42487C2AF001B8722 /* Model.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B3E30A22487C2AF001B8722 /* Model.cpp */; };
+		5B512B98248FA05B00C644D2 /* ShadowMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B512B96248FA05B00C644D2 /* ShadowMap.cpp */; };
 		5B947560242D7EBD005C526C /* Mesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B94755E242D7EBD005C526C /* Mesh.cpp */; };
 		5B9475632430EC9B005C526C /* Shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B9475612430EC9B005C526C /* Shader.cpp */; };
 		5B94757224323E41005C526C /* Window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5B94757024323E41005C526C /* Window.cpp */; };
@@ -46,6 +47,10 @@
 		5B332E5623D521F100494F35 /* libglfw.3.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.3.dylib; path = ../../../../usr/local/Cellar/glfw/3.3.1/lib/libglfw.3.3.dylib; sourceTree = "<group>"; };
 		5B3E30A22487C2AF001B8722 /* Model.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Model.cpp; sourceTree = "<group>"; };
 		5B3E30A32487C2AF001B8722 /* Model.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Model.hpp; sourceTree = "<group>"; };
+		5B512B96248FA05B00C644D2 /* ShadowMap.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ShadowMap.cpp; sourceTree = "<group>"; };
+		5B512B97248FA05B00C644D2 /* ShadowMap.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ShadowMap.hpp; sourceTree = "<group>"; };
+		5B512B99248FA72F00C644D2 /* directional_shadow_map.vs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = directional_shadow_map.vs; sourceTree = "<group>"; };
+		5B512B9A248FA76000C644D2 /* directional_shadow_map.fs */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = directional_shadow_map.fs; sourceTree = "<group>"; };
 		5B94755E242D7EBD005C526C /* Mesh.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Mesh.cpp; sourceTree = "<group>"; };
 		5B94755F242D7EBD005C526C /* Mesh.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Mesh.hpp; sourceTree = "<group>"; };
 		5B9475612430EC9B005C526C /* Shader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Shader.cpp; sourceTree = "<group>"; };
@@ -135,6 +140,8 @@
 				5BEDFE1924811F14008B2FC9 /* SpotLight.hpp */,
 				5B3E30A22487C2AF001B8722 /* Model.cpp */,
 				5B3E30A32487C2AF001B8722 /* Model.hpp */,
+				5B512B96248FA05B00C644D2 /* ShadowMap.cpp */,
+				5B512B97248FA05B00C644D2 /* ShadowMap.hpp */,
 			);
 			path = OpenGLCourseApp;
 			sourceTree = "<group>";
@@ -159,6 +166,8 @@
 			children = (
 				5B94756C24310A47005C526C /* shader.fs */,
 				5B94756D24310C1B005C526C /* shader.vs */,
+				5B512B99248FA72F00C644D2 /* directional_shadow_map.vs */,
+				5B512B9A248FA76000C644D2 /* directional_shadow_map.fs */,
 			);
 			path = Shader;
 			sourceTree = "<group>";
@@ -228,6 +237,7 @@
 				5BEDFE1324645F85008B2FC9 /* DirectionalLight.cpp in Sources */,
 				5B9475632430EC9B005C526C /* Shader.cpp in Sources */,
 				5BE8522A243E5F5F001EAC83 /* Camera.cpp in Sources */,
+				5B512B98248FA05B00C644D2 /* ShadowMap.cpp in Sources */,
 				5BE8523D2447EB05001EAC83 /* Material.cpp in Sources */,
 				5BE8522D244103F7001EAC83 /* Texture.cpp in Sources */,
 				5B332E4923D5206D00494F35 /* main.cpp in Sources */,

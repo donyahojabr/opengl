@@ -51,6 +51,7 @@ Material dullMaterial;
 
 Model plane;
 Model house;
+//Model trees;
 
 GLfloat deltaTime = 0.0f;
 GLfloat lastTime = 0.0f;
@@ -170,9 +171,9 @@ int main(){
     plane.LoadModel("Models/11803_Airplane_v1_l1.obj");
     house = Model();
     house.LoadModel("Models/farmhouse_obj.obj");
+//    trees = Model();
+//    trees.LoadModel("Models/trees9.obj");
     
-    
-
     mainLight = DirectionalLight(1.0f,1.0f,1.0f, //color
                                   0.4f, 0.2f, //aIntensity, dIntensity
                                   0.0f, 0.0f, -1.0f); //x,y,z dirs
@@ -201,7 +202,7 @@ int main(){
 //                              1.0f, 0.0f, 0.0f,
 //                              20.0f);
 //    spotLightCount++;
-//    
+//
 //    spotLights[1] = SpotLight(1.0f, 1.0f, 1.0f,
 //                              0.0f, 1.0f,
 //                              0.0, 1.5f, 0.0f,
@@ -299,8 +300,7 @@ int main(){
 
         shinyMaterial.UseMaterial(uniformSpecularIntensity, uniformShininess);
         house.RenderModel();
-
-
+    
         glUseProgram(0);
 
         mainWindow.swapBuffers();
